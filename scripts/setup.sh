@@ -1,6 +1,6 @@
 #!/bin/bash -vx
 
-sudo az storage blob download --container-name app-binaries --file /tmp/jdk-18_linux-x64_bin.tar.gz --name jdk-18_linux-x64_bin.tar.gz --account-name terraform616 --account-key 3NcvEdeaO0oEnBU3HgDvKGzV+PJKiEnh8ZgqfSDHNTf4Oc2YIWqRGiKaVqzJ10aWwR+RMItqPDLy+AStzUqvsQ==
+sudo az storage blob download --container-name app-binaries --file /tmp/jdk-18_linux-x64_bin.tar.gz --name jdk-18_linux-x64_bin.tar.gz --account-name terraform616 --account-key
 
 
 sudo cp -r /tmp/jdk-18_linux-x64_bin.tar.gz /home/adminazure
