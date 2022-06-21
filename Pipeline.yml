@@ -1,0 +1,27 @@
+trigger: 
+- main
+variables: 
+- name: ResourceGroup
+  value: 'terraform-rg'
+- name: AppVm
+  value: 'demo-vm-01'
+
+jobs: 
+- job: JAVA_SETUP
+  steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: 'terra'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        for VM in `echo $(AppVM) | sed 's/,/ /g'`
+        do
+         echo "starting download and install"
+         echo $VM
+         az vm run-command invoke -g  $(ResourceGroup) -n $VM --command-id RunShellScript --scripts @scripts/setup.sh
+         echo done
+        done
+        echo "Java Setup is completed"
+      addSpnToEnvironment: true
+  
